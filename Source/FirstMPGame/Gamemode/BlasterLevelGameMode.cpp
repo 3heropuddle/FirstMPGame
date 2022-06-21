@@ -3,3 +3,16 @@
 
 #include "BlasterLevelGameMode.h"
 
+void ABlasterLevelGameMode::PostLogin(APlayerController* NewPlayer)
+{
+	Super::PostLogin(NewPlayer);
+
+	UWorld* World = GetWorld();
+	if (World) {
+		if (NewPlayer) {
+			FInputModeGameOnly InputDataMode;
+			NewPlayer->SetInputMode(InputDataMode);
+			NewPlayer->SetShowMouseCursor(false);
+		}
+	}
+}
